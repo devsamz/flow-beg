@@ -1,60 +1,53 @@
-# Token Registry Smart Contract
+# NFT Metadata
+
+# CryptoPoops Smart Contract
 
 ## Overview
 
-This repository contains the source code for a Token Registry smart contract, designed to manage token registration on the blockchain. The contract provides functionality for registering new tokens and retrieving token information.
+The `CryptoPoops` smart contract is an implementation of a non-fungible token (NFT) on the Flow blockchain. It extends the `NonFungibleToken` contract and introduces additional functionality for managing collections of unique tokens.
 
 ## Table of Contents
 
 - [Features](#features)
-- [Structure](#structure)
-- [Transaction Code](#transaction-code)
-- [Script Code](#script-code)
+- [Smart Contract Structure](#smart-contract-structure)
+- [Public Functions](#public-functions)
 - [Usage](#usage)
-
-## Structure
-
-### Token Information
-
-The contract defines a `TokenInfo` structure with the following properties:
-
-- `symbol` (String): The symbol of the token.
-- `name` (String): The name of the token.
-- `totalSupply` (UInt64): The total supply of the token.
-- `owner` (Address): The owner address of the token.
+- [Installation](#installation)
+- [License](#license)
 
 ## Features
 
-- **Token Registration**: Users can register new tokens with a symbol, name, total supply, and owner address.
-- **Token Information Retrieval**: Retrieve token information based on token symbols.
+- **Non-Fungible Tokens (NFTs):** Supports the creation, transfer, and management of unique tokens.
+- **Collections:** Allows users to organize and manage collections of NFTs.
+- **Public Accessibility:** Provides functions for public access to NFT metadata.
 
-## Transaction Code
+## Smart Contract Structure
 
-### Register Token
+The `CryptoPoops` contract structure includes NFTs, Collections, a Minter resource, and relevant initialization logic.
 
-```cadence
-import TokenRegistry from 0xADDRESS
+## Public Functions
 
-transaction(symbol: String, name: String, totalSupply: UInt64, ownerAddress: Address) {
+### `getNFTMetadataByID(id: UInt64): CryptoPoops.NFT`
 
-    prepare(signer: AuthAccount) {}
+This function allows anyone to retrieve the metadata of a CryptoPoops NFT based on its ID.
 
-    execute {
-        TokenRegistry.registerToken(symbol: symbol, name: name, totalSupply: totalSupply, ownerAddress: ownerAddress)
-        log("Token registered successfully.")
-    }
-}
-```
+## Usage
 
-## Script Code
+To use the CryptoPoops smart contract, follow the deployment and interaction steps outlined in the [Installation](#installation) section.
 
-### Get Token Info
+## Installation
 
-```cadence
-import TokenRegistry from 0xADDRESS
+1. **Deploy the Contract:**
 
-pub fun getTokenInfo(symbol: String): TokenRegistry.TokenInfo {
-    return TokenRegistry.tokens[symbol]!
-}
+   - Deploy the CryptoPoops smart contract on the Flow blockchain.
 
-```
+2. **Initialize Collections:**
+
+   - Initialize collections and mint NFTs using the provided functions.
+
+3. **Interact with Public Functions:**
+   - Users can interact with the `getNFTMetadataByID` function to retrieve NFT metadata.
+
+## License
+
+This project is licensed under the MIT License
