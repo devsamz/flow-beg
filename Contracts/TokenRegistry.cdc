@@ -16,8 +16,8 @@ pub contract TokenRegistry {
         }
     }
 
-    pub fun registerToken(symbol: String, name: String, totalSupply: UInt64) {
-        let newToken = TokenInfo(_symbol: symbol, _name: name, _totalSupply: totalSupply, _owner: self.publisher)
+    pub fun registerToken(symbol: String, name: String, totalSupply: UInt64, owner: Address) {
+        let newToken = TokenInfo(_symbol: symbol, _name: name, _totalSupply: totalSupply, _owner: owner)
         self.tokens[symbol] = newToken
     }
 
